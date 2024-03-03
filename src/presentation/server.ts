@@ -24,6 +24,8 @@ export class Server {
   async start() {
 
     //* Middlewares
+    this.app.use(express.json()); // raw
+    this.app.use(express.urlencoded({ extended: true })); // permite el x-www-form-urlencoded
 
     //* Public Folder
     // Incluimos el webserver a mostrar
