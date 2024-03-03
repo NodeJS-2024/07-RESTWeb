@@ -26,3 +26,19 @@ npx tsc --init --outDir dist/ --rootDir src
 ```
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
 ```
+
+# Instalacion de prisma para ORM de Postgresql
+1. Ejecutar comando 
+```
+npm install prisma --save-dev
+```
+2. Comando para decir que DB vamos a usar
+```
+npx prisma init --datasource-provider postgresql
+```
+3. Cambios la configuracion en misma a nuestra variable de .env
+4. Creamos el modelo
+5. Generamos la migración
+```
+npx prisma migrate dev --name init
+```
