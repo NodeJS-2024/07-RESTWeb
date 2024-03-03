@@ -1,3 +1,7 @@
+# Dev
+
+1. Clonar el .env.template y crear el .env
+
 # Node con TypeScript - TS-Node-dev (preferido)
 
 1. Instalar TypeScript y demás dependencias
