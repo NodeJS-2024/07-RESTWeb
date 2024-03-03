@@ -1,6 +1,8 @@
 # Dev
 
 1. Clonar el .env.template y crear el .env
+2. Ejecutar el comando ```docker compose up -d```
+2. Ejecutar el comando para bajar ```docker compose down```
 
 # Node con TypeScript - TS-Node-dev (preferido)
 
