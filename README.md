@@ -42,3 +42,6 @@ npx prisma init --datasource-provider postgresql
 ```
 npx prisma migrate dev --name init
 ```
+
+# Buenas practicas de express
+- https://expressjs.com/en/advanced/best-practice-performance.html
