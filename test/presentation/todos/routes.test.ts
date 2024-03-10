@@ -37,7 +37,7 @@ describe('Todo route testing', () => {
 
   });
 
-  test('should return TODOs api/todos/:id', async () => {
+  test('should return a TODO api/todos/:id', async () => {
 
     const todo = await prisma.todo.create({ data: todo1 });
 
@@ -52,5 +52,19 @@ describe('Todo route testing', () => {
     });
 
   });
+
+  test('should return a 404 NotFound api/todos/:id', async () => {
+
+    // await prisma.todo.delete({ where: { id: 999 }});
+
+    const todoId = 9999;
+    const { body } = await request(testServer.app)
+      .get(`/api/todos/${ todoId }`)
+      .expect(400);
+
+    expect( body ).toEqual({ error: `Todo with id ${ todoId } not found` });
+    
+  });
+
 
 });
