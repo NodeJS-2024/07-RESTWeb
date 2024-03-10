@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import { prisma } from '../../data/postgres';
 import { CreateTodoDto, UpdateTodoDto } from '../../domain/dtos';
 import { TodoRepository } from '../../domain';
 
+// Prisma esta altamente acomplado en los controllers
 export class TodoController {
 
   //* DI => Inyeccion de dependencias
