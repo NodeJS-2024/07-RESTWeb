@@ -103,5 +103,53 @@ describe('Todo route testing', () => {
 
   });
 
+  test('should return an updated TODO api/todos/:id', async () => {
+
+    const todo = await prisma.todo.create({ data: todo1 });  
+
+    const { body } = await request(testServer.app)
+      .put(`/api/todos/${ todo.id }`)
+      .send({ text: 'Hola mundo UPDATED', completedAt: '2024-10-12' })
+      .expect(200);
+
+      expect(body).toEqual({
+        id: expect.any(Number),
+        text: 'Hola mundo UPDATED',
+        completedAt: '2024-10-12T00:00:00.000Z'
+      });
+
+  });
+
+  // Realizar la operacion con errores personalizados
+  test('should return 404 if TODO not found', async () => {
+
+    const idTest = 999;
+
+    const { body } = await request(testServer.app)
+      .put(`/api/todos/${ idTest }`)
+      .send({ text: 'Hola mundo UPDATED', completedAt: '2024-10-12' })
+      .expect(400);
+
+      expect(body).toEqual({ error: `Todo with id ${ idTest } not found` });
+
+  });
+
+  test('should return an updated TODO only the date', async () => {
+
+    const todo = await prisma.todo.create({ data: todo1 });
+
+    const { body } = await request(testServer.app)
+      .put(`/api/todos/${ todo.id }`)
+      .send({ completedAt: '2024-10-21' })
+      .expect(200);
+
+      expect(body).toEqual({
+        id: expect.any(Number),
+        text: todo1.text,
+        completedAt: '2024-10-21T00:00:00.000Z'
+      });
+
+  });
+
 
 });
